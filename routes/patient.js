@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const validationMiddleWare = require("../middleware/validation");
+// const validationMiddleWare = require("../middleware/validation");
 const authenticationmiddleWare = require("../middleware/authentecation");
 const Patient = require("../models/patient");
 // const { check } = require("express-validator");
@@ -60,5 +60,11 @@ router.patch(
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
   const patient = await Patient.findByIdAndDelete(id);
+  res.status(200).json(patient);
+});
+
+router.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  const patient = await Patient.findById(id);
   res.status(200).json(patient);
 });

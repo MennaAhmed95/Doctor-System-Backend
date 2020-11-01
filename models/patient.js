@@ -24,7 +24,6 @@ const patientSchema = new mongoose.Schema(
     },
     drName: {
       type: String,
-      required: true,
     },
   },
   {
